@@ -8,5 +8,16 @@
 
   <button mat-button color="primary" (click)="takeClick()">Take</button>
 
+  <button mat-button color="primary" (click)="debounceTimeClick()">Debounce Time</button>
+
 
 </div>
+
+<mat-divider></mat-divider>
+
+<mat-form-field class="mat-form-top">
+  <mat-label>Search By (click in Debounce Time before typing): </mat-label>
+  <input matInput placeholder="Type something" autocomplete="off" 
+    (keyup)="searchByUsingDebounceTime($event)"
+    [(ngModel)]="searchInput" />
+</mat-form-field>

@@ -9,13 +9,15 @@ import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { BasicCreationComponent } from './basic-creation/basic-creation.component';
 import { OperatorsComponent } from './operators/operators.component';
+import { AsyncComponent } from './async/async.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicCreationComponent,
-    OperatorsComponent
+    OperatorsComponent,
+    AsyncComponent
   ],
   imports: [
     BrowserModule,

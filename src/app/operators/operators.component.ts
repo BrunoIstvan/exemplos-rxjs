@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from, fromEvent, interval, Observable, Subscription } from 'rxjs';
+import { from, fromEvent, interval, Observable, Subscription, Subject } from 'rxjs';
 
-import { map, delay, filter, tap, take } from 'rxjs/operators';
+import { map, delay, filter, tap, take, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-operators',
@@ -9,6 +9,8 @@ import { map, delay, filter, tap, take } from 'rxjs/operators';
   styleUrls: ['./operators.component.css']
 })
 export class OperatorsComponent implements OnInit {
+
+  searchInput: string;
 
   constructor() { }
 
@@ -94,11 +96,23 @@ export class OperatorsComponent implements OnInit {
                   (e) => console.error(e),
                   () => console.log('Completed'));
 
+  }
 
+  debounceTimeClick() {
+
+    this.seachEntry$
+      .pipe(
+        debounceTime(500)
+      )
+      .subscribe(v => console.log(v));
 
   }
 
+  seachEntry$: Subject<string> = new Subject<string>();
+  searchByUsingDebounceTime(event) {
 
+    this.seachEntry$.next(this.searchInput);
 
+  }
 
 }
